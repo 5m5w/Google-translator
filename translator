@@ -1,0 +1,6 @@
+from googletrans import Translator
+from pprint import pprint
+
+translator = Translator()
+s = 'Traders Bet on USD Coin Rebound as USDC Falls to 90 Cents'
+print(translator.translate(s, dest='zh-tw').text)
