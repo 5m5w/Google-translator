@@ -1,3 +1,5 @@
+# 記得下載最新版本 !pip install googletrans==4.0.0-rc1
+
 from googletrans import Translator
 from pprint import pprint
 
