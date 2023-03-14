@@ -1,0 +1,30 @@
+# 記得先 pip install googletrans==4.0.0-rc1
+
+import requests
+from bs4 import BeautifulSoup
+from googletrans import Translator
+
+translator = Translator()
+
+def coindesk(url):
+  resp = requests.get(url)
+  if resp.status_code != 200:
+    print('error')
+    return
+  soup = BeautifulSoup(resp.text, 'html5lib')
+
+  ads = 0
+
+  for title in soup.find_all('h2', 'typography__StyledTypography-owin6q-0 iNEzYl'):
+    news1 = title.text
+    trans_news1 = translator.translate(news1, dest='zh-tw').text
+    print(trans_news1)
+  for title in soup.find_all('h2', 'typography__StyledTypography-owin6q-0 hjHKEC'):
+    ads += 1
+    # 跳過廣告
+    if ads != 2:
+      news2 = title.text
+      trans_news2 = translator.translate(news2, dest='zh-tw').text
+      print(trans_news2)
+
+coindesk('https://www.coindesk.com/')
