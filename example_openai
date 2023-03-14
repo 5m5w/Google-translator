@@ -3,7 +3,7 @@
 import os
 import openai
 
-openai.api_key = "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"
+openai.api_key = "your_API_KEY"
 
 def translate_text(prompt):
   response = openai.Completion.create(
